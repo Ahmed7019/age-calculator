@@ -18,6 +18,9 @@
     --smokey-grey: hsl(0, 1%, 44%);
   }
 
+  input {
+    all: unset;
+  }
   .text-purple {
     color: var(--purple);
   }
@@ -41,4 +44,6 @@
   .bg-smokeygrey {
     background-color: var(--smokey-grey);
   }
+
+
 }
