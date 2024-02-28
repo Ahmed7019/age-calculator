@@ -544,15 +544,13 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.font-poppins {
+  font-family: Poppins, san-serif;
+}
+
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
-}
-
-@font-face {
-  font-family: poppins;
-
-  src: url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap");
 }
 
 @layer {

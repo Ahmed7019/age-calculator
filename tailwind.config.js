@@ -3,7 +3,9 @@ module.exports = {
   content: ["index.html"],
   theme: {
     extend: {
-      poppins: ["Poppins", "san-serif"],
+      fontFamily: {
+        poppins: ["Poppins", "san-serif"],
+      },
     },
   },
   plugins: [],
