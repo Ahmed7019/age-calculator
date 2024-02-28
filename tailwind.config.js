@@ -1,9 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [".html"],
+  content: ["index.html"],
   theme: {
-    extend: {},
+    extend: {
+      poppins: ["Poppins", "san-serif"],
+    },
   },
   plugins: [],
-}
-
+};

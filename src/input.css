@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+  font-family: poppins;
+  src: url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap");
+}
+@layer {
+  /* Colors */
+
+  :root {
+    /* Primary colors */
+    --purple: hsl(259, 100%, 65%);
+    --light-red: hsl(0, 100%, 67%);
+    /* Neutral */
+    --offwhite: hsl(0, 0%, 94%);
+    --light-grey: hsl(0, 0%, 86%);
+    --smokey-grey: hsl(0, 1%, 44%);
+  }
+
+  .text-purple {
+    color: var(--purple);
+  }
+
+  .text-lightgrey {
+    color: var(--light-grey);
+  }
+
+  .text-smokeygrey {
+    color: var(--smokey-grey);
+  }
+
+  .bg-purple {
+    background-color: var(--purple);
+  }
+
+  .bg-offwhite {
+    background-color: var(--offwhite);
+  }
+
+  .bg-smokeygrey {
+    background-color: var(--smokey-grey);
+  }
+}
