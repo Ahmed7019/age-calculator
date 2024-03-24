@@ -12,32 +12,36 @@
 <body class="font-poppins font-bold grid place-items-center bg-offwhite">
     <form action="" class="relative my-10 bg-white p-6 rounded-lg rounded-br-[4rem]">
         <div class=" flex my-4">
-            <div class="m-2"> 
-            <label for="day" class="text-smokeygrey tracking-[.2rem] uppercase">Day</label><br>
-            <input type="number" name="day" placeholder="DD" step="01" class="p-2  border border-neutral-300  w-20 rounded-md">
+            <div class="m-2">
+                <label for="day" class="text-smokeygrey tracking-[.2rem] uppercase">Day</label><br>
+                <input type="number" name="day" placeholder="DD" step="01"
+                    class="p-2  border border-neutral-300  w-20 rounded-md">
+            </div>
+            <div class="m-2">
+                <label for="month" class="text-smokeygrey tracking-[.2rem] uppercase">Month</label><br>
+                <input type="number" name="month" placeholder="MM"
+                    class="p-2  border border-gray-300  w-20 rounded-md ">
+            </div>
+            <div class="m-2">
+                <label for="year" class="text-smokeygrey tracking-[.2rem] uppercase">Year</label><br>
+                <input type="number" name="year" placeholder="YYYY" class="p-2  border border-gray-300 w-20 rounded-md">
+            </div>
         </div>
-        <div class="m-2">
-            <label for="month" class="text-smokeygrey tracking-[.2rem] uppercase">Month</label><br>
-            <input type="number" name="month" placeholder="MM" class="p-2  border border-gray-300  w-20 rounded-md " >
+        <hr class="relative top-8 bg-black">
+        <div class="flex justify-center">
+            <button type="submit" class="relative ">
+                <img src="images/icon-arrow.svg" alt="" class="bg-purple p-4 rounded-[50%] w-14  object-contain">
+            </button>
         </div>
-        <div class="m-2">
-            <label for="year" class="text-smokeygrey tracking-[.2rem] uppercase">Year</label><br>
-            <input type="number" name="year" placeholder="YYYY" class="p-2  border border-gray-300 w-20 rounded-md" >
-        </div>
-    </div>
-    <hr class="relative top-8 bg-black">
-    <div class="flex justify-center">
-        <button type="submit" class="relative ">
-            <img src="images/icon-arrow.svg" alt="" class="bg-purple p-4 rounded-[50%] w-14  object-contain">
-        </button>
-    </div>
 
-    <div class="output my-6">
-        <p><i class="text-5xl"><span class="text-purple">- -</span>years</i></p>
-        <p><i class="text-5xl"><span class="text-purple">- -</span>months</i></p>
-        <p><i class="text-5xl"><span class="text-purple">- -</span>days</i></p>
-    </div>
+        <div class="output my-6">
+            <p><i class="text-5xl"><span class="text-purple" id="years-area">- -</span>years</i></p>
+            <p><i class="text-5xl"><span class="text-purple" id="months-area">- -</span>months</i></p>
+            <p><i class="text-5xl"><span class="text-purple" id="days-area">- -</span>days</i></p>
+        </div>
     </form>
+
+
     <script src="main.js"></script>
 </body>
 
