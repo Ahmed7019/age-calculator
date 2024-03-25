@@ -17,11 +17,55 @@ subBtn.addEventListener("click", () => {
   let birthday = new Date(`${userM} ${userD} ${userY}`);
   let dateNow = new Date();
   let yearsOld = dateNow - birthday;
-  daysSpan.textContent = `${parseInt(yearsOld / 1000 / 60 / 60 / 24)} `;
-  monthsSpan.textContent = `${parseInt(yearsOld / 1000 / 60 / 60 / 24 / 30)} `;
-  yearsSpan.textContent = `${parseInt(yearsOld / 1000 / 60 / 60 / 24 / 365)} `;
-  console.log(dateNow);
+  if (userD === "" || userM === "" || userY === "") {
+    // Change the color of the label to red
+    dayInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "red"
+    );
+    // Show note to user to fill input fields
+    // dayInput.after("");
+    // monthInput.after("");
+    // yearInput.after("");
+    // dayInput.after(
+    //   document
+    //     .createElement("p")
+    //     .appendChild(document.createTextNode("This field is required"))
+    // );
+    // monthInput.after(
+    //   document
+    //     .createElement("p")
+    //     .appendChild(document.createTextNode("This field is required"))
+    // );
+    // yearInput.after(
+    //   document
+    //     .createElement("p")
+    //     .appendChild(document.createTextNode("This field is required"))
+    // );
+    monthInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "red"
+    );
+    yearInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "red"
+    );
+  } else {
+    daysSpan.textContent = `${parseInt(yearsOld / 1000 / 60 / 60 / 24)} `;
+    monthsSpan.textContent = `${parseInt(
+      yearsOld / 1000 / 60 / 60 / 24 / 30
+    )} `;
+    yearsSpan.textContent = `${parseInt(
+      yearsOld / 1000 / 60 / 60 / 24 / 365
+    )} `;
+  }
 });
+
+// Check if fields are empty
+
+// subBtn.addEventListener("click", () => {
+
+// });
 
 // Prevent form submittion
 
