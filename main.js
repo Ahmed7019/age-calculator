@@ -14,9 +14,13 @@ subBtn.addEventListener("click", () => {
   let userM = monthInput.value;
   let userD = dayInput.value;
   let userY = yearInput.value;
-  daysSpan.textContent = `${parseInt(userD)} `;
-  monthsSpan.textContent = `${parseInt(userM)} `;
-  yearsSpan.textContent = `${parseInt(userY)} `;
+  let birthday = new Date(`${userM} ${userD} ${userY}`);
+  let dateNow = new Date();
+  let yearsOld = dateNow - birthday;
+  daysSpan.textContent = `${parseInt(yearsOld / 1000 / 60 / 60 / 24)} `;
+  monthsSpan.textContent = `${parseInt(yearsOld / 1000 / 60 / 60 / 24 / 30)} `;
+  yearsSpan.textContent = `${parseInt(yearsOld / 1000 / 60 / 60 / 24 / 365)} `;
+  console.log(dateNow);
 });
 
 // Prevent form submittion
