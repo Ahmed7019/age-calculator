@@ -18,7 +18,7 @@ subBtn.addEventListener("click", () => {
   let dateNow = new Date();
   let yearsOld = dateNow - birthday,
     daysOld = parseInt(yearsOld / 1000 / 60 / 60 / 24),
-    monthOld = parseInt(yearsOld / 1000 / 60 / 60 / 24),
+    monthOld = parseInt(yearsOld / 1000 / 60 / 60 / 24 / 30),
     years = parseInt(yearsOld / 1000 / 60 / 60 / 24 / 365);
 
   if (userD === "" || userM === "" || userY === "") {
@@ -70,6 +70,7 @@ subBtn.addEventListener("click", () => {
     reqMsg.forEach((msg) => {
       msg.textContent = "";
     });
+
     // old in days
     daysSpan.textContent = daysOld;
     // old in months
@@ -80,7 +81,6 @@ subBtn.addEventListener("click", () => {
     checkDate(userD, userM, userY);
   }
 });
-
 
 // Prevent form submittion
 
@@ -102,6 +102,8 @@ let checkDate = (day, month, year) => {
     dayInput.nextElementSibling.style.setProperty("color", "red");
     dayInput.nextElementSibling.style.setProperty("font-size", "8px");
     dayInput.nextElementSibling.style.setProperty("margin", "8px 0");
+    // Don't change the HTML
+    daysSpan.textContent = "- -";
   } else {
     // Label color to grey
     dayInput.previousElementSibling.previousElementSibling.style.setProperty(
@@ -122,6 +124,8 @@ let checkDate = (day, month, year) => {
     monthInput.nextElementSibling.style.setProperty("color", "red");
     monthInput.nextElementSibling.style.setProperty("font-size", "8px");
     monthInput.nextElementSibling.style.setProperty("margin", "8px 0");
+    // Don't change the HTML
+    monthsSpan.textContent = "- -";
   } else {
     // Label color to grey
     monthInput.previousElementSibling.previousElementSibling.style.setProperty(
@@ -144,6 +148,8 @@ let checkDate = (day, month, year) => {
     yearInput.nextElementSibling.style.setProperty("color", "red");
     yearInput.nextElementSibling.style.setProperty("font-size", "8px");
     yearInput.nextElementSibling.style.setProperty("margin", "8px 0");
+    // Don't change the HTML
+    yearsSpan.textContent = "- -";
   } else {
     // Label color to grey
     yearInput.previousElementSibling.previousElementSibling.style.setProperty(
