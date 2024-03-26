@@ -560,6 +560,14 @@ video {
   margin: 0.5rem;
 }
 
+.m-36 {
+  margin: 9rem;
+}
+
+.m-3 {
+  margin: 0.75rem;
+}
+
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;

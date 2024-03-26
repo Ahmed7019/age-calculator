@@ -16,9 +16,15 @@ subBtn.addEventListener("click", () => {
   let userY = yearInput.value;
   let birthday = new Date(`${userM} ${userD} ${userY}`);
   let dateNow = new Date();
-  let yearsOld = dateNow - birthday;
+  let yearsOld = dateNow - birthday,
+    daysOld = parseInt(yearsOld / 1000 / 60 / 60 / 24),
+    monthOld = parseInt(yearsOld / 1000 / 60 / 60 / 24),
+    years = parseInt(yearsOld / 1000 / 60 / 60 / 24 / 365);
+
   if (userD === "" || userM === "" || userY === "") {
+    // Check if the day is valid
     let reqMsg = document.querySelectorAll("#required");
+
     // Show note to user to fill input fields
     reqMsg.forEach((msg) => {
       msg.textContent = "This field is required";
@@ -44,7 +50,7 @@ subBtn.addEventListener("click", () => {
       "red"
     );
   } else {
-    // Change the color of the label to red
+    // Change the color of the label to grey
     dayInput.previousElementSibling.previousElementSibling.style.setProperty(
       "color",
       "grey"
@@ -64,24 +70,85 @@ subBtn.addEventListener("click", () => {
     reqMsg.forEach((msg) => {
       msg.textContent = "";
     });
-    daysSpan.textContent = `${parseInt(yearsOld / 1000 / 60 / 60 / 24)} `;
-    monthsSpan.textContent = `${parseInt(
-      yearsOld / 1000 / 60 / 60 / 24 / 30
-    )} `;
-    yearsSpan.textContent = `${parseInt(
-      yearsOld / 1000 / 60 / 60 / 24 / 365
-    )} `;
+    // old in days
+    daysSpan.textContent = daysOld;
+    // old in months
+    monthsSpan.textContent = monthOld;
+    // old in years
+    yearsSpan.textContent = years;
+
+    checkDate(userD, userM, userY);
   }
 });
 
-// Check if fields are empty
-
-// subBtn.addEventListener("click", () => {
-
-// });
 
 // Prevent form submittion
 
 subBtn.addEventListener("click", (e) => {
   e.preventDefault();
 });
+
+// Check if the date is wrong
+let checkDate = (day, month, year) => {
+  // Check days
+  if (day > 31) {
+    // Label color to red
+    dayInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "red"
+    );
+    dayInput.nextElementSibling.textContent = "Must be a valid day";
+    dayInput.nextElementSibling.style.setProperty("display", "block");
+    dayInput.nextElementSibling.style.setProperty("color", "red");
+    dayInput.nextElementSibling.style.setProperty("font-size", "8px");
+    dayInput.nextElementSibling.style.setProperty("margin", "8px 0");
+  } else {
+    // Label color to grey
+    dayInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "grey"
+    );
+  }
+
+  // Check the month
+  if (month > 12) {
+    // Change label color to red
+    monthInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "red"
+    );
+    monthInput.nextElementSibling.textContent = "Must be a valid month";
+    monthInput.nextElementSibling.style.setProperty("display", "block");
+    monthInput.nextElementSibling.style.setProperty("color", "red");
+    monthInput.nextElementSibling.style.setProperty("font-size", "8px");
+    monthInput.nextElementSibling.style.setProperty("margin", "8px 0");
+  } else {
+    // Label color to grey
+    monthInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "grey"
+    );
+  }
+
+  // Check year
+  let currentYear = new Date().getFullYear();
+  if (year > currentYear) {
+    // Label color to red
+    yearInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "red"
+    );
+
+    yearInput.nextElementSibling.textContent = "Must be in the past";
+    yearInput.nextElementSibling.style.setProperty("display", "block");
+    yearInput.nextElementSibling.style.setProperty("color", "red");
+    yearInput.nextElementSibling.style.setProperty("font-size", "8px");
+    yearInput.nextElementSibling.style.setProperty("margin", "8px 0");
+  } else {
+    // Label color to grey
+    yearInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "grey"
+    );
+  }
+};
