@@ -18,30 +18,23 @@ subBtn.addEventListener("click", () => {
   let dateNow = new Date();
   let yearsOld = dateNow - birthday;
   if (userD === "" || userM === "" || userY === "") {
+    let reqMsg = document.querySelectorAll("#required");
+    // Show note to user to fill input fields
+    reqMsg.forEach((msg) => {
+      msg.textContent = "This field is required";
+      msg.style.setProperty("display", "block");
+      msg.style.setProperty("font-weight", "light");
+      msg.style.setProperty("color", "red");
+      msg.style.setProperty("font-size", "8px");
+      msg.style.setProperty("margin", "8px 0 ");
+    });
+
     // Change the color of the label to red
     dayInput.previousElementSibling.previousElementSibling.style.setProperty(
       "color",
       "red"
     );
-    // Show note to user to fill input fields
-    // dayInput.after("");
-    // monthInput.after("");
-    // yearInput.after("");
-    // dayInput.after(
-    //   document
-    //     .createElement("p")
-    //     .appendChild(document.createTextNode("This field is required"))
-    // );
-    // monthInput.after(
-    //   document
-    //     .createElement("p")
-    //     .appendChild(document.createTextNode("This field is required"))
-    // );
-    // yearInput.after(
-    //   document
-    //     .createElement("p")
-    //     .appendChild(document.createTextNode("This field is required"))
-    // );
+
     monthInput.previousElementSibling.previousElementSibling.style.setProperty(
       "color",
       "red"
@@ -51,6 +44,26 @@ subBtn.addEventListener("click", () => {
       "red"
     );
   } else {
+    // Change the color of the label to red
+    dayInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "grey"
+    );
+
+    monthInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "grey"
+    );
+    yearInput.previousElementSibling.previousElementSibling.style.setProperty(
+      "color",
+      "grey"
+    );
+
+    // Remove the alert message
+    let reqMsg = document.querySelectorAll("#required");
+    reqMsg.forEach((msg) => {
+      msg.textContent = "";
+    });
     daysSpan.textContent = `${parseInt(yearsOld / 1000 / 60 / 60 / 24)} `;
     monthsSpan.textContent = `${parseInt(
       yearsOld / 1000 / 60 / 60 / 24 / 30
