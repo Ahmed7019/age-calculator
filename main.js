@@ -88,77 +88,73 @@ subBtn.addEventListener("click", (e) => {
   e.preventDefault();
 });
 
+// Create a function to make the red text alert
+
+let alertText = (input) => {
+  // Label of the input
+  input.previousElementSibling.previousElementSibling.style.setProperty(
+    "color",
+    "red"
+  );
+
+  // Style of the text
+  input.nextElementSibling.textContent = "Must be a valid day";
+  input.nextElementSibling.style.setProperty("display", "block");
+  input.nextElementSibling.style.setProperty("color", "red");
+  input.nextElementSibling.style.setProperty("font-size", "8px");
+  input.nextElementSibling.style.setProperty("margin", "8px 0");
+};
+
+// Return text to grey
+let noAlertText = (input) => {
+  input.previousElementSibling.previousElementSibling.style.setProperty(
+    "color",
+    "grey"
+  );
+};
+
 // Check if the date is wrong
 let checkDate = (day, month, year) => {
   // Check days
   if (day > 31) {
     // Label color to red
-    dayInput.previousElementSibling.previousElementSibling.style.setProperty(
-      "color",
-      "red"
-    );
     dayInput.nextElementSibling.textContent = "Must be a valid day";
-    dayInput.nextElementSibling.style.setProperty("display", "block");
-    dayInput.nextElementSibling.style.setProperty("color", "red");
-    dayInput.nextElementSibling.style.setProperty("font-size", "8px");
-    dayInput.nextElementSibling.style.setProperty("margin", "8px 0");
+    alertText(dayInput);
     // Don't change the HTML
     daysSpan.textContent = "- -";
   } else {
     // Label color to grey
-    dayInput.previousElementSibling.previousElementSibling.style.setProperty(
-      "color",
-      "grey"
-    );
+    noAlertText(dayInput);
   }
 
   // Check the month
   if (month > 12) {
     // Change label color to red
-    monthInput.previousElementSibling.previousElementSibling.style.setProperty(
-      "color",
-      "red"
-    );
     monthInput.nextElementSibling.textContent = "Must be a valid month";
-    monthInput.nextElementSibling.style.setProperty("display", "block");
-    monthInput.nextElementSibling.style.setProperty("color", "red");
-    monthInput.nextElementSibling.style.setProperty("font-size", "8px");
-    monthInput.nextElementSibling.style.setProperty("margin", "8px 0");
+    alertText(monthInput);
     // Don't change the HTML
     monthsSpan.textContent = "- -";
   } else {
     // Label color to grey
-    monthInput.previousElementSibling.previousElementSibling.style.setProperty(
-      "color",
-      "grey"
-    );
+    noAlertText(monthInput);
   }
 
   // Check year
   let currentYear = new Date().getFullYear();
   if (year > currentYear) {
     // Label color to red
-    yearInput.previousElementSibling.previousElementSibling.style.setProperty(
-      "color",
-      "red"
-    );
 
     yearInput.nextElementSibling.textContent = "Must be in the past";
-    yearInput.nextElementSibling.style.setProperty("display", "block");
-    yearInput.nextElementSibling.style.setProperty("color", "red");
-    yearInput.nextElementSibling.style.setProperty("font-size", "8px");
-    yearInput.nextElementSibling.style.setProperty("margin", "8px 0");
+    alertText(yearInput);
     // Don't change the HTML
     yearsSpan.textContent = "- -";
   } else {
     // Label color to grey
-    yearInput.previousElementSibling.previousElementSibling.style.setProperty(
-      "color",
-      "grey"
-    );
+    noAlertText(yearInput);
   }
 
   // Check if the year is leap
+  
   //three conditions to find out the leap year
   if ((0 == year % 4 && 0 != year % 100) || 0 == year % 400) {
     // check if the month is february then check the days
