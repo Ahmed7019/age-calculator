@@ -163,6 +163,23 @@ let checkDate = (day, month, year) => {
     // Label color to grey
     noAlertText(dayInput);
   }
+
+  // Check days specific months [4,6,9,11]
+
+  switch (month) {
+    case "4":
+    case "6":
+    case "9":
+    case "11":
+      if (day > 30) {
+        dayInput.nextElementSibling.textContent = "Must be a valid date";
+        alertText(dayInput);
+        daysSpan.textContent = "- -";
+        monthsSpan.textContent = "- -";
+        yearsSpan.textContent = "- -";
+      }
+      break;
+  }
 };
 
 // Prevent form submittion
