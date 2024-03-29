@@ -10,6 +10,30 @@ let monthsSpan = document.querySelector("#months-area");
 let daysSpan = document.querySelector("#days-area");
 // [2] The value of input fields
 
+// Create a function to make the red text alert
+
+let alertText = (input) => {
+  // Label of the input
+  input.previousElementSibling.previousElementSibling.style.setProperty(
+    "color",
+    "red"
+  );
+
+  // Style of the text
+  input.nextElementSibling.style.setProperty("display", "block");
+  input.nextElementSibling.style.setProperty("color", "red");
+  input.nextElementSibling.style.setProperty("font-size", "8px");
+  input.nextElementSibling.style.setProperty("margin", "8px 0");
+};
+
+// Return text to grey
+let noAlertText = (input) => {
+  input.previousElementSibling.previousElementSibling.style.setProperty(
+    "color",
+    "grey"
+  );
+};
+
 subBtn.addEventListener("click", () => {
   let userM = monthInput.value;
   let userD = dayInput.value;
@@ -82,37 +106,6 @@ subBtn.addEventListener("click", () => {
   }
 });
 
-// Prevent form submittion
-
-subBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-});
-
-// Create a function to make the red text alert
-
-let alertText = (input) => {
-  // Label of the input
-  input.previousElementSibling.previousElementSibling.style.setProperty(
-    "color",
-    "red"
-  );
-
-  // Style of the text
-  input.nextElementSibling.textContent = "Must be a valid day";
-  input.nextElementSibling.style.setProperty("display", "block");
-  input.nextElementSibling.style.setProperty("color", "red");
-  input.nextElementSibling.style.setProperty("font-size", "8px");
-  input.nextElementSibling.style.setProperty("margin", "8px 0");
-};
-
-// Return text to grey
-let noAlertText = (input) => {
-  input.previousElementSibling.previousElementSibling.style.setProperty(
-    "color",
-    "grey"
-  );
-};
-
 // Check if the date is wrong
 let checkDate = (day, month, year) => {
   // Check days
@@ -134,6 +127,7 @@ let checkDate = (day, month, year) => {
     alertText(monthInput);
     // Don't change the HTML
     monthsSpan.textContent = "- -";
+    yearsSpan.textContent = "- -";
   } else {
     // Label color to grey
     noAlertText(monthInput);
@@ -154,7 +148,7 @@ let checkDate = (day, month, year) => {
   }
 
   // Check if the year is leap
-  
+
   //three conditions to find out the leap year
   if ((0 == year % 4 && 0 != year % 100) || 0 == year % 400) {
     // check if the month is february then check the days
@@ -170,7 +164,6 @@ let checkDate = (day, month, year) => {
       dayInput.nextElementSibling.style.setProperty("margin", "8px 0");
     }
   } else {
-    console.log(year + " is not a leap year");
     // Label color to grey
     dayInput.previousElementSibling.previousElementSibling.style.setProperty(
       "color",
@@ -178,3 +171,9 @@ let checkDate = (day, month, year) => {
     );
   }
 };
+
+// Prevent form submittion
+
+subBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+});
