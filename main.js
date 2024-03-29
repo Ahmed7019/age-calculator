@@ -153,22 +153,15 @@ let checkDate = (day, month, year) => {
   if ((0 == year % 4 && 0 != year % 100) || 0 == year % 400) {
     // check if the month is february then check the days
     if (month === "2" && day > "29") {
-      dayInput.previousElementSibling.previousElementSibling.style.setProperty(
-        "color",
-        "red"
-      );
       dayInput.nextElementSibling.textContent = "Must be a valid date";
-      dayInput.nextElementSibling.style.setProperty("display", "block");
-      dayInput.nextElementSibling.style.setProperty("color", "red");
-      dayInput.nextElementSibling.style.setProperty("font-size", "8px");
-      dayInput.nextElementSibling.style.setProperty("margin", "8px 0");
+      alertText(dayInput);
+      daysSpan.textContent = "- -";
+      monthsSpan.textContent = "- -";
+      yearsSpan.textContent = "- -";
     }
   } else {
     // Label color to grey
-    dayInput.previousElementSibling.previousElementSibling.style.setProperty(
-      "color",
-      "grey"
-    );
+    noAlertText(dayInput);
   }
 };
 
